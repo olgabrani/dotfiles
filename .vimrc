@@ -14,6 +14,10 @@ endif
 
 let g:molokai_original = 1
 :colorscheme molokai
+
+" set background=dark
+" colorscheme solarized
+
 " Requires vim 7.3
 " set undodir=~/.vim/undodir
 " set undofile
@@ -34,12 +38,12 @@ set hlsearch
 set incsearch
 set showmatch
 set vb t_vb=
-set ruler
 set cursorline
 syntax on
 setlocal spell spelllang=en
-set nospell
 set encoding=utf-8
+
+"Show line numbers
 set number
 set modeline
 nnoremap / /\v
@@ -60,7 +64,6 @@ nnoremap <down> gj
 
 filetype plugin on 
 set ofu=syntaxcomplete#Complete
-au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
 
 " Tab autocompletes
 function! Mosh_Tab_Or_Complete()
@@ -85,26 +88,6 @@ vmap C :s/^/\/\/<cr>gv:s/^\/\/\/\/<cr>gv:s/^<cr>:noh<cr>
 :imap <C-tab> <ESC>:tabnext<cr>i
 :imap <C-t> <ESC>:tabnew<cr>
 
-autocmd BufRead,BufNewFile *.php setfiletype=php
-
-" Ctrl + L to lint in PHP
-:autocmd FileType php noremap <C-L> :!/usr/bin/php -l %<CR>
-:noremap <C-L> :!/usr/bin/php -l %<CR>
-
-" XSLT abbreviations
-:iab xif <xsl:if test=""><CR></xsl:if><Up><Right><Right><Right><Right><Right>
-:iab xfor <xsl:for-each select=""><CR></xsl:for-each><Up><Right><Right><Right><Right><Right><Right><Right>
-:iab xcho <xsl:choose><CR><Tab><xsl:when test=""><CR></xsl:when><CR><xsl:otherwise><CR></xsl:otherwise><CR><BS></xsl:choose><Up><Up><Up><Up><Right><Right><Right><Right><Right><Right><Right>
-:iab xvo <xsl:value-of select="" /><Left><Left><Left><Left>
-:iab xtem <xsl:template match=""><CR></xsl:template><Esc>k$hi
-:iab xatt <xsl:attribute name=""><CR></xsl:attribute><Esc>k$hi
-
-" PHP abbreviations
-:iab phpcontroller <?php<CR><Tab>class Controller {<CR>public static function View() {<CR>}<CR>public static function Listing() {<CR>}<CR>public static function Create() {<CR>}<CR>public static function Update() {<CR>}<CR>public static function Delete() {<CR>}<CR><BS>}<CR><BS>?><Esc>gg<Down>WWi
-
-" Common typos
-:iab functino function
-:iab fales false
 
 command! W :w
 command! Q :q
@@ -116,7 +99,6 @@ imap <C-c> <Esc>
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
 cmap w!! w !sudo tee % >/dev/null
-set pastetoggle=<F8>
 
 set mouse=v
 set nohidden
@@ -157,20 +139,6 @@ augroup END
 map N Nzz
 map n nzz
 
-autocmd FileType c         set makeprg=gcc\ -Wall\ -O2
-autocmd FileType cpp       set makeprg=g++\ -Wall\ -O2
-
-" Save, compile and run files
-function! CompileAndRun()
-  write
-  silent! make %
-  redraw!
-  cwindow
-  if len(getqflist()) == 0
-    exec '!time ./a.out'
-  endif
-endfunction
-nnoremap <leader>c :call CompileAndRun()<cr>
 set columns=80
 
 set pastetoggle=<F2>
@@ -180,3 +148,13 @@ set title
 
 " Show current line and column position in file
 set ruler
+
+
+" Show a blue vertical line on the 80th character (pep8 compliant)
+if exists('+colorcolumn')
+  set colorcolumn=80
+  highlight ColorColumn ctermbg=33
+else
+  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+endif
+
