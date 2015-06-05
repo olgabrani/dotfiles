@@ -50,7 +50,7 @@ let g:molokai_original = 1
 
 " Requires vim 7.3
 " set undodir=~/.vim/undodir
-" set undofile
+set undofile
 " set undolevels=1000
 " set undoreload=10000
 set spell
