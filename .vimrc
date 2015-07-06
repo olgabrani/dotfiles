@@ -197,3 +197,7 @@ autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 let &t_EI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
 let &t_SI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
 
+" When invoked, unless a starting directory is specified, CtrlP will set its
+" 'a':  the directory of the current file but only applies when the current working directory outside of CtrlP
+" isn't a direct ancestor of the directory of the current file
+let g:ctrlp_working_path_mode = 'a'
