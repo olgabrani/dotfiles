@@ -94,6 +94,9 @@ nnoremap gj j
 nnoremap gk k
 nnoremap <up> gk
 nnoremap <down> gj
+nnoremap <leader>l :bn<cr>
+nnoremap <leader>t :CtrlP<cr>
+
 
 filetype plugin on 
 set ofu=syntaxcomplete#Complete
