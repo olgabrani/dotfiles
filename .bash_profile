@@ -4,7 +4,9 @@ export PATH=/usr/local/smlnj-110.75/bin/:$PATH
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 # Finished adapting your PATH environment variable for use with MacPorts.
 export PROJECT_HOME=$HOME/projects
-source /usr/local/bin/virtualenvwrapper.sh
+
+# for home computer only
+#source /usr/local/bin/virtualenvwrapper.sh
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
@@ -21,6 +23,6 @@ parse_git_branch() {
 # Custom bash prompt via kirsle.net/wizards/ps1.html
 #export PS1="\[$(tput bold)\]\[$(tput setaf 1)\]\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\] \$(parse_git_branch) \[$(tput setaf 7)\]\\$ "
 
-
-source ~/.config/ls_col
+# for home computer only
+#source ~/.config/ls_col
 alias ls='ls -lh -G'
