@@ -13,6 +13,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'mustache/vim-mustache-handlebars'
 
 
 " All of your Plugins must be added before the following line
