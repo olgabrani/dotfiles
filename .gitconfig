@@ -1,5 +1,3 @@
-[core]
-    editor = vim
 [user]
 	name = Olga Brani
 	email = olgabrani@grnet.gr
@@ -12,6 +10,7 @@
     ll = log --pretty=oneline --abbrev-commit --max-count=30
     lh = log --format=%h
     ci = commit
+    b = branch
     st = status
     x = checkout HEAD
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset by %C(yellow)%ae%Creset' --abbrev-commit --date=relative
