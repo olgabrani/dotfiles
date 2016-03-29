@@ -20,3 +20,7 @@ and then launch vim and run:
 ```
 :PluginInstall
 ```
+
+##Oh-my-zsh
+
+My latest coup de coeur [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
