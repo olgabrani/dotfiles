@@ -15,6 +15,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'nvie/vim-flake8'
 
 
 " All of your Plugins must be added before the following line
@@ -100,7 +101,7 @@ nnoremap <leader>l :bn<cr>
 nnoremap <leader>t :CtrlP<cr>
 
 
-filetype plugin on 
+filetype plugin on
 set ofu=syntaxcomplete#Complete
 
 " Tab autocompletes
@@ -119,7 +120,7 @@ vmap C :s/^/\/\/<cr>gv:s/^\/\/\/\/<cr>gv:s/^<cr>:noh<cr>
 :nmap <C-S-tab> :tabprevious<cr>
 :nmap <C-tab> :tabnext<cr>
 :nmap <C-t> :tabnew<cr>
-:map <C-t> :tabnew<cr>:e<space> 
+:map <C-t> :tabnew<cr>:e<space>
 :map <C-S-tab> :tabprevious<cr>
 :map <C-tab> :tabnext<cr>
 :imap <C-S-tab> <ESC>:tabprevious<cr>i
