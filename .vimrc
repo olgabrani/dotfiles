@@ -16,6 +16,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'nvie/vim-flake8'
+Plugin 'scrooloose/nerdtree'
 
 
 " All of your Plugins must be added before the following line
