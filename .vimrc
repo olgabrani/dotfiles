@@ -1,15 +1,10 @@
-" Version: 1.24
-
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible
+filetype off
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
@@ -18,88 +13,49 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/nerdtree'
 
+call vundle#end()
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
+filetype plugin indent on
 
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
-
-if &term =~ "xterm" || &term =~ "screen"
- set t_Co=256
- if has("terminfo")
-   let &t_Sf=nr2char(27).'[3%p1%dm'
-   let &t_Sb=nr2char(27).'[4%p1%dm'
- else
-   let &t_Sf=nr2char(27).'[3%dm'
-   let &t_Sb=nr2char(27).'[4%dm'
- endif
-endif
-
-" call pathogen#infect()
-
+"Set colorscheme
 let g:molokai_original = 1
 :colorscheme molokai
 
-" set background=dark
-" colorscheme solarized
-
-" Requires vim 7.3
-" set undodir=~/.vim/undodir
+"Automatically save undo history to an undo file
 set undofile
-" set undolevels=1000
-" set undoreload=10000
+
+"Set spell checking languages
 set spell
+set spelllang=en
+
 set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-set bs=2
+"Ignore case when searching
 set ignorecase
 set smartcase
-set gdefault
 set autoindent
-set autowrite
+"Highlight all search matches
 set hlsearch
 set incsearch
 set showmatch
 set vb t_vb=
+"Highlight the current line
 set cursorline
 syntax on
-setlocal spell spelllang=en
 set encoding=utf-8
 
 "Show line numbers
 set number
-set modeline
 nnoremap / /\v
 vnoremap / /\v
 nnoremap ? ?\v
 vnoremap ? ?\v
 let mapleader = ","
-nnoremap <leader><space> :noh<cr>
-nnoremap <leader>t :tabnew<cr>:e<space>
-nnoremap <leader>pp :set paste<cr>
-nnoremap <leader>np :set nopaste<cr>
-nnoremap j gj
-nnoremap k gk
-nnoremap gj j
-nnoremap gk k
-nnoremap <up> gk
-nnoremap <down> gj
 nnoremap <leader>l :bn<cr>
 nnoremap <leader>t :CtrlP<cr>
+nnoremap <leader>r :NERDTree<cr>
 
 
 filetype plugin on
@@ -129,17 +85,6 @@ vmap C :s/^/\/\/<cr>gv:s/^\/\/\/\/<cr>gv:s/^<cr>:noh<cr>
 :imap <C-t> <ESC>:tabnew<cr>
 
 
-command! W :w
-command! Q :q
-
-map <F1> <Esc>
-imap <F1> <Esc>
-imap <C-c> <Esc>
-
-map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
-
-cmap w!! w !sudo tee % >/dev/null
-
 set mouse=v
 set nohidden
 
@@ -148,61 +93,19 @@ nnoremap : ;
 vnoremap ; :
 vnoremap : ;
 
-" Restore cursor position to where it was before
-augroup JumpCursorOnEdit
-   au!
-   autocmd BufReadPost *
-            \ if expand("<afile>:p:h") !=? $TEMP |
-            \   if line("'\"") > 1 && line("'\"") <= line("$") |
-            \     let JumpCursorOnEdit_foo = line("'\"") |
-            \     let b:doopenfold = 1 |
-            \     if (foldlevel(JumpCursorOnEdit_foo) > foldlevel(JumpCursorOnEdit_foo - 1)) |
-            \        let JumpCursorOnEdit_foo = JumpCursorOnEdit_foo - 1 |
-            \        let b:doopenfold = 2 |
-            \     endif |
-            \     exe JumpCursorOnEdit_foo |
-            \   endif |
-            \ endif
-   " Need to postpone using "zv" until after reading the modelines.
-   autocmd BufWinEnter *
-            \ if exists("b:doopenfold") |
-            \   exe "normal zv" |
-            \   if(b:doopenfold > 1) |
-            \       exe  "+".1 |
-            \   endif |
-            \   unlet b:doopenfold |
-            \ endif
-augroup END
-
-" Search mappings: These will make it so that going to the next one in a
-" search will center on the line it's found in.
-map N Nzz
-map n nzz
-
 set pastetoggle=<F2>
-
 " Show file title in terminal tab
 set title
-
 " Show current line and column position in file
 set ruler
-
-
-" Show a blue vertical line on the 80th character (pep8 compliant)
-if exists('+colorcolumn')
-  set colorcolumn=80
-  highlight ColorColumn ctermbg=33
-else
-  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-endif
-
+"Faster Normal Mode
+imap ii <Esc>
+"Use <Space> to go half-page down
+nnoremap <Space> <c-d>
 
 " Set tabspace=2 for javascript files
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 
-" Change cursor shape between insert and normal mode in iTerm2.app
-let &t_EI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
-let &t_SI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
 
 " When invoked, unless a starting directory is specified, CtrlP will set its
 " 'a':  the directory of the current file but only applies when the current working directory outside of CtrlP
