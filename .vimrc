@@ -111,3 +111,9 @@ autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 " 'a':  the directory of the current file but only applies when the current working directory outside of CtrlP
 " isn't a direct ancestor of the directory of the current file
 let g:ctrlp_working_path_mode = 'a'
+
+" Vim jumps to the last position when reopening a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g'\"" | endif
+endif
