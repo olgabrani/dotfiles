@@ -12,6 +12,7 @@ Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/nerdtree'
+Plugin 'nelsyeung/twig.vim'
 
 call vundle#end()
 
