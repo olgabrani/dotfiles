@@ -13,6 +13,7 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/nerdtree'
 Plugin 'nelsyeung/twig.vim'
+Plugin 'leafgarland/typescript-vim'
 
 call vundle#end()
 
