@@ -14,14 +14,18 @@ Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/nerdtree'
 Plugin 'nelsyeung/twig.vim'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'dense-analysis/ale'
+Plugin 'NLKNguyen/papercolor-theme'
 
 call vundle#end()
 
 filetype plugin indent on
 
 "Set colorscheme
-let g:molokai_original = 1
-:colorscheme molokai
+"let g:molokai_original = 1
+":colorscheme molokai
+set background=dark
+colorscheme PaperColor
 
 "Automatically save undo history to an undo file
 set undofile
